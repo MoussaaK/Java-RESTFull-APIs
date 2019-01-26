@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+</head>
+
+<body>
+
+	<h2>Create Commune</h2>
+
+	<form action="rest/commune/create" method="post">
+		<input type="text" name="name">
+		<input type="submit" value="Create Commune">
+	</form>
+
+	
+	<h2>Update Commune</h2>
+	
+	<form action="rest/commune/update" method="post">
+		<input type="text" name="id" value="id">
+		<input type="text" name="name" value="name">
+		<input type="submit" value="Update">
+	</form>
+	<br />
+	<br />
+	
+	<h2>Add Maire</h2>
+
+	<form action="rest/maire/create" method="post">
+		<input type="text" name="name">
+		<input type="submit" value="Add Maire">
+	</form>
+
+	
+	<h2>Change Maire</h2>
+	
+	<form action="rest/maire/update" method="post">
+		<input type="text" name="id" value="id">
+		<input type="text" name="name" value="name">
+		<input type="submit" value="Update">
+	</form>
+	<br />
+	<br />
+	
+	<h2>Create Departement</h2>
+
+	<form action="rest/departement/create" method="post">
+		<input type="text" name="name">
+		<input type="submit" value="Create Departement">
+	</form>
+
+	
+	<h2>Update Departement</h2>
+	
+	<form action="rest/departement/update" method="post">
+		<input type="text" name="id" value="id">
+		<input type="text" name="name" value="name">
+		<input type="submit" value="Update Departement">
+	</form>
+	
+
+</body>
+</html>
