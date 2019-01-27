@@ -35,7 +35,7 @@ public class Departement implements Serializable {
 	private String code;
 	
 	@XmlElement(name="liste‐de‐communes")
-	@JoinColumn(name="Communes")
+	@JoinColumn(name="communes")
 	private Collection<Commune> communes;
 
 	public Departement() {

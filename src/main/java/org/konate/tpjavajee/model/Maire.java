@@ -51,7 +51,7 @@ public class Maire implements Serializable {
 	private Date dateOfBirth;
 	
 	@XmlElement
-	@JoinColumn(name="Commune")
+	@JoinColumn(name="commune")
     private Commune commune;
 
 	public Maire() {
