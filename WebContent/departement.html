@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+	<meta charset="UTF-8">
+	</head>
+	
+	<body>
+		<div ng-app="CityApp" ng-controller="departementCtrl">
+	
+			<h2>Create Departement</h2>
+			<form action="rest/departement/create" method="post">
+				<input type="text" name="name"> <input type="submit" value="Create Departement">
+			</form>
+	
+			<h2>Update Departement</h2>
+			<form action="rest/departement/update" method="post">
+				<input type="text" name="id" value="id"> 
+				<input type="text" name="name" value="name">
+				<input type="submit" value="Update Departement">
+			</form>
+		</div>
+	</body>
+</html>
