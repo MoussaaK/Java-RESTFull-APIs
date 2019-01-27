@@ -4,7 +4,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.konate.tpjavajee.model.Commune;
 import org.konate.tpjavajee.model.Departement;
 
 @Stateless
@@ -34,12 +33,12 @@ public class DepartementEJB {
 		departement.setNom(newName);
 	}
 
-	public Departement linkDepartementToCommunes(long idDepartement, long debutCodePostal) {
+	/*public Departement linkDepartementToCommunes(long idDepartement, long debutCodePostal) {
 		Departement departement = em.find(Departement.class, idDepartement);
 		for (Commune commune : departement.getCommunes()) {
 			if(commune.getDpt().toString().startsWith(Long.toString(debutCodePostal)))
 				commune.setDpt(departement);
 		}
 		return departement;
-	}
+	}*/
 }
