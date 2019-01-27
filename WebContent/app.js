@@ -59,7 +59,7 @@ function getCommunes($scope) {
 	        $scope.orderByMe = function(x) {
 	            $scope.myOrderBy = x;
 	          }
-	        console.log($scope.items);
+	        console.log($scope.communes);
 	      }
 	    });
 	  }
