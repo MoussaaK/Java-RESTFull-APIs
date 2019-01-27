@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -33,7 +34,7 @@ public class Commune implements Serializable{
 	@Column(length=50, name="nom")
 	private String nom;
 	
-	@XmlElement
+	/*@XmlElement
 	@Column(length=50, name="codePostale")
 	private String codePostale;
 	
@@ -46,8 +47,9 @@ public class Commune implements Serializable{
 	}
 	public void setDpt(Departement dpt) {
 		this.dpt = dpt;
-	}
-	@XmlElement
+	}*/
+	
+	@OneToOne
 	@JoinColumn(name="maire")
     private Maire maire;
 	
