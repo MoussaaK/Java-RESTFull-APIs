@@ -1,8 +1,11 @@
 package org.konate.tpjavajee.ejb;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.konate.tpjavajee.model.Commune;
 import org.konate.tpjavajee.model.Maire;
@@ -43,5 +46,9 @@ public class CommuneEJB {
 		return commune;
 	}
 	
-	
+	@SuppressWarnings("unchecked")
+	public List<Commune> retrieveCommunes() {
+		Query query = em.createNativeQuery("SELECT id, nom, maire FROM communes;");
+		return query.getResultList();
+	}
 }
