@@ -28,10 +28,9 @@ public class CommuneEJB {
 		return em.find(Commune.class, id);
 	}
 
-	public Commune deleteCommune(long id) {
+	public void deleteCommune(long id) {
 		Commune commune = em.find(Commune.class, id);
 		em.remove(commune);
-		return commune;
 	}
 
 	public void updateCommune(long id, String newName) {

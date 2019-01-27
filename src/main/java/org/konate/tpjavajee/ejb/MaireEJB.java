@@ -23,10 +23,9 @@ public class MaireEJB {
 		return em.find(Maire.class, id);
 	}
 
-	public Maire deleteMaire(long id) {
+	public void deleteMaire(long id) {
 		Maire maire = em.find(Maire.class, id);
 		em.remove(maire);
-		return maire;
 	}
 
 	public void updateMaire(long id, String newName) {
