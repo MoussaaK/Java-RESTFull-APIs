@@ -28,9 +28,8 @@ public class CommuneRS {
 		MediaType.APPLICATION_JSON
 	})
 	public Response getCommune(@PathParam("id") long id) {
-		Commune commune = communeEJB.retrieveCommune(id);
 		return Response.ok()
-				.entity("commune creee avec l'id " + commune.getId())
+				.entity(communeEJB.retrieveCommune(id).getNom())
 				.build(); 
 	}
 	
@@ -70,9 +69,9 @@ public class CommuneRS {
 		MediaType.APPLICATION_JSON
 	})
 	public Response deleteCommune(@PathParam("id") long id) {
-		Commune commune = communeEJB.deleteCommune(id);
+		communeEJB.deleteCommune(id);
 		return Response.ok()
-				.entity("La commune " + commune.getNom() + " a ete supprimer avec succes")
+				.entity("La commune avec l'ID = " + id + " a ete supprime avec succes")
 				.build(); 
 	}
 
@@ -84,7 +83,7 @@ public class CommuneRS {
 	public Response link(@PathParam("idCommune") long idCommune, @PathParam("idMaire") long idMaire) {
 		Commune commune = communeEJB.linkCommuneToMaire(idCommune, idMaire);
 		return Response.ok()
-				.entity(commune)
+				.entity(commune.getNom())
 				.build(); 
 	}
 }

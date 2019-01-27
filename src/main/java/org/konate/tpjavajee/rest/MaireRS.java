@@ -11,7 +11,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.konate.tpjavajee.ejb.MaireEJB;
-import org.konate.tpjavajee.model.Maire;
 
 @Path("maire")
 public class MaireRS {
@@ -25,9 +24,8 @@ public class MaireRS {
 			    MediaType.APPLICATION_JSON
 			  })
 	public Response getMaire(@PathParam("id") long id) {
-		Maire maire = maireEJB.retrieveMaire(id);
 		return Response.ok()
-				.entity(maire)
+				.entity(maireEJB.retrieveMaire(id))
 				.build(); 
 	}
 
@@ -55,9 +53,9 @@ public class MaireRS {
 			    MediaType.APPLICATION_JSON
 			  })
 	public Response deleteMaire(@PathParam("id") long id) {
-		Maire maire = maireEJB.deleteMaire(id);
+		maireEJB.deleteMaire(id);
 		return Response.ok()
-				.entity("Le maire " + maire.getNom() + " a ete supprimer avec succes")
+				.entity("Maire with ID : " + id + " removed successfully")
 				.build(); 
 	}
 
