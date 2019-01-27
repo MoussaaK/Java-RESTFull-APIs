@@ -1,64 +1,31 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-<meta charset="UTF-8">
-</head>
-
-<body>
-
-	<h2>Create Commune</h2>
-
-	<form action="rest/commune/create" method="post">
-		<input type="text" name="name">
-		<input type="submit" value="Create Commune">
-	</form>
-
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	</head>
 	
-	<h2>Update Commune</h2>
+	<body>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="index.html">CountryApp</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html">Home</a></li>
+					<li><a href="commune.html" target="_blank">Commune</a></li>
+					<li><a href="maire.html" target="_blank">Maire</a></li>
+					<li><a href="departement.html" target="_blank">Departement</a></li>
+				</ul>
+				
+			</div>
+		</nav>
 	
-	<form action="rest/commune/update" method="post">
-		<input type="text" name="id" value="id">
-		<input type="text" name="name" value="name">
-		<input type="submit" value="Update">
-	</form>
-	<br />
-	<br />
-	
-	<h2>Add Maire</h2>
-
-	<form action="rest/maire/create" method="post">
-		<input type="text" name="name">
-		<input type="submit" value="Add Maire">
-	</form>
-
-	
-	<h2>Change Maire</h2>
-	
-	<form action="rest/maire/update" method="post">
-		<input type="text" name="id" value="id">
-		<input type="text" name="name" value="name">
-		<input type="submit" value="Update">
-	</form>
-	<br />
-	<br />
-	
-	<h2>Create Departement</h2>
-
-	<form action="rest/departement/create" method="post">
-		<input type="text" name="name">
-		<input type="submit" value="Create Departement">
-	</form>
-
-	
-	<h2>Update Departement</h2>
-	
-	<form action="rest/departement/update" method="post">
-		<input type="text" name="id" value="id">
-		<input type="text" name="name" value="name">
-		<input type="submit" value="Update Departement">
-	</form>
-	
-
-</body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="./angular.js"></script>
+		<script src="./app.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</body>
 </html>
