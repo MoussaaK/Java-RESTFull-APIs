@@ -1,4 +1,6 @@
 package org.konate.tpjavajee.rest;
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -28,8 +30,20 @@ public class CommuneRS {
 	public Response getCommune(@PathParam("id") long id) {
 		Commune commune = communeEJB.retrieveCommune(id);
 		return Response.ok()
-				.entity(commune)
+				.entity("commune creee avec l'id " + commune.getId())
 				.build(); 
+	}
+	
+	@GET @Path("all")
+	@Produces({
+		MediaType.APPLICATION_XML,
+		MediaType.APPLICATION_JSON
+	})
+	public Response getCommunes() {
+		List<Commune> communes = communeEJB.retrieveCommunes();
+		return Response.ok()
+				.entity(communes)
+				.build();
 	}
 
 	@POST @Path("create")
@@ -65,6 +79,7 @@ public class CommuneRS {
 	@LINK @Path("{idCommune}/maire/{idMaire}")
 	@Produces({
 		MediaType.APPLICATION_XML,
+		MediaType.APPLICATION_JSON
 	})
 	public Response link(@PathParam("idCommune") long idCommune, @PathParam("idMaire") long idMaire) {
 		Commune commune = communeEJB.linkCommuneToMaire(idCommune, idMaire);
