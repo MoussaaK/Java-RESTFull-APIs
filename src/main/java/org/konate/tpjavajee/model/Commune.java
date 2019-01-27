@@ -34,11 +34,11 @@ public class Commune implements Serializable{
 	private String nom;
 	
 	@XmlElement
-	@Column(length=50, name="code_postale")
-	private String code_postale;
+	@Column(length=50, name="codePostale")
+	private String codePostale;
 	
 	@XmlElement
-	@JoinColumn
+	@JoinColumn(name="dpt")
 	private Departement dpt;
 	
 	public Departement getDpt() {
@@ -48,7 +48,7 @@ public class Commune implements Serializable{
 		this.dpt = dpt;
 	}
 	@XmlElement
-	@JoinColumn(name="Maire")
+	@JoinColumn(name="maire")
     private Maire maire;
 	
 	public Commune() {
