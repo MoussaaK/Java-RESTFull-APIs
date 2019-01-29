@@ -1,20 +1,32 @@
 package org.konate.tpjavajee.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import org.konate.tpjavajee.util.Civility;
 
 @Entity(name="Maire")
 @Table( name="maires")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Maire implements Serializable {
 
 	/**
@@ -31,7 +43,7 @@ public class Maire implements Serializable {
 	@Column(length=50, name="nom")
 	private String nom;
 	
-	/*@XmlElement
+	@XmlElement
 	@Column(length=50, name="prenom")
 	private String prenom;
 	
@@ -41,10 +53,11 @@ public class Maire implements Serializable {
 	private Civility civilite;
 	
 	@XmlElement
+	@Column(length=5, name="date")
 	@Temporal(TemporalType.DATE)
-	private Date dateOfBirth;*/
+	private Date dateOfBirth;
 	
-	@OneToOne
+	@OneToOne(mappedBy="maire")
 	@JoinColumn(name="commune")
     private Commune commune;
 
@@ -68,7 +81,7 @@ public class Maire implements Serializable {
 		this.id = id;
 	}
 
-	/*public Date getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
@@ -82,6 +95,6 @@ public class Maire implements Serializable {
 
 	public void setCivilite(Civility civilite) {
 		this.civilite = civilite;
-	}*/
+	}
 	
 }

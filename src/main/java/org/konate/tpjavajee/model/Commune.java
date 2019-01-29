@@ -21,45 +21,45 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name="communes")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+public class Commune implements Serializable {
 
-public class Commune implements Serializable{
-	
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@XmlAttribute
 	@Column(length=50, name="id")
 	private long id;
-	
+
 	@XmlElement
 	@Column(length=50, name="nom")
 	private String nom;
-	
-	/*@XmlElement
-	@Column(length=50, name="codePostale")
+
+	@XmlElement
+	@Column(length=50, name="code_postale")
 	private String codePostale;
-	
+
 	@XmlElement
 	@JoinColumn(name="dpt")
 	private Departement dpt;
-	
-	public Departement getDpt() {
-		return dpt;
-	}
-	public void setDpt(Departement dpt) {
-		this.dpt = dpt;
-	}*/
-	
+
 	@OneToOne
 	@JoinColumn(name="maire")
-    private Maire maire;
-	
+	private Maire maire;
+
 	public Commune() {
 	}
 	public Commune(long id, String nom) {
 		this.id=id;
 		this.nom=nom;
 	}
-	
+
+
+	public Departement getDpt() {
+		return dpt;
+	}
+	public void setDpt(Departement dpt) {
+		this.dpt = dpt;
+	}
+
 	public String getNom() {
 		return nom;
 	}
@@ -69,7 +69,7 @@ public class Commune implements Serializable{
 	public void setId(long id) {
 		this.id = id;
 	}
-		
+
 	public long getId() {
 		return this.id;
 	}
@@ -79,5 +79,9 @@ public class Commune implements Serializable{
 	public void setMaire(Maire maire) {
 		this.maire = maire;
 	}
-
+	@Override
+	public String toString() {
+		return "Commune [id=" + id + ", nom=" + nom + ", codePostale=" + codePostale + ", dpt=" + dpt + ", maire="
+				+ maire + "]";
+	}
 }
