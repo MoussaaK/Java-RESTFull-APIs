@@ -2,10 +2,10 @@ var app = angular.module("CityApp", []);
 
 function getMaires($scope) {
 
-  $scope.items = [];
+  $scope.maires = [];
   $scope.search = function () {
     var city = $scope.cityName;
-    var tmpUrl = "http://www.omdbapi.com/?s=" + city + "&apikey=12543596&page=1";
+    var tmpUrl = "http://localhost:8080/tp-jee-glassfish/rest/maire/all";
     $.ajax({
       contentType: "",
       async: false,
@@ -14,19 +14,16 @@ function getMaires($scope) {
       dataType: "json",
       success: function(data) {
         console.log(data);
-        data.Search.forEach(function(item) {
+        data.forEach(function(maire) {
           
-          $scope.items.push({
-            Name : item.Title,
-            Year : item.Year,
-            Reference : item.imdbID
+          $scope.maires.push({
+        	  ID : maire.id,
+	          Nom : maire.nom,
+	          Prenom : maire.prenom
           });
         }, this);
         
-        $scope.orderByMe = function(x) {
-            $scope.myOrderBy = x;
-          }
-        console.log($scope.items);
+        console.log($scope.maires);
       }
     });
   }
@@ -56,9 +53,6 @@ function getCommunes($scope) {
 	          });
 	        }, this);
 	        
-	        $scope.orderByMe = function(x) {
-	            $scope.myOrderBy = x;
-	          }
 	        console.log($scope.communes);
 	      }
 	    });
@@ -68,10 +62,10 @@ app.controller("communeCtrl", getCommunes);
 
 function getDepartements($scope) {
 
-	  $scope.items = [];
+	  $scope.dpts = [];
 	  $scope.search = function () {
 	    var city = $scope.cityName;
-	    var tmpUrl = "";
+	    var tmpUrl = "http://localhost:8080/tp-jee-glassfish/rest/departement/all";
 	    $.ajax({
 	      contentType: "",
 	      async: false,
@@ -80,19 +74,16 @@ function getDepartements($scope) {
 	      dataType: "json",
 	      success: function(data) {
 	        console.log(data);
-	        data.Search.forEach(function(item) {
+	        data.Search.forEach(function(dpt) {
 	          
-	          $scope.items.push({
-	            Name : item.Title,
-	            Year : item.Year,
-	            Reference : item.imdbID
+	          $scope.dpts.push({
+	        	  ID : dpts.id,
+	        	  Nom : dpts.nom,
+	        	  Code_Postale : dpts.code
 	          });
 	        }, this);
 	        
-	        $scope.orderByMe = function(x) {
-	            $scope.myOrderBy = x;
-	          }
-	        console.log($scope.items);
+	        console.log($scope.dpts);
 	      }
 	    });
 	  }
