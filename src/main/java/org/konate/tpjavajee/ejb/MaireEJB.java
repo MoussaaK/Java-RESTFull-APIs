@@ -1,8 +1,11 @@
 package org.konate.tpjavajee.ejb;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.konate.tpjavajee.model.Maire;
 
@@ -31,5 +34,11 @@ public class MaireEJB {
 	public void updateMaire(long id, String newName) {
 		Maire maire = em.find(Maire.class, id);
 		maire.setNom(newName);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Maire> retrieveMaires() {
+		Query query = em.createNativeQuery("SELECT id, nom, prenom FROM maires;");
+		return query.getResultList();
 	}
 }
