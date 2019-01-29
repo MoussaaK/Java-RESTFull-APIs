@@ -1,4 +1,6 @@
 package org.konate.tpjavajee.rest;
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -11,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.konate.tpjavajee.ejb.MaireEJB;
+import org.konate.tpjavajee.model.Maire;
 
 @Path("maire")
 public class MaireRS {
@@ -57,6 +60,18 @@ public class MaireRS {
 		return Response.ok()
 				.entity("Maire with ID : " + id + " removed successfully")
 				.build(); 
+	}
+	
+	@GET @Path("all")
+	@Produces({
+		MediaType.APPLICATION_XML,
+		MediaType.APPLICATION_JSON
+	})
+	public Response getMaires() {
+		List<Maire> maires = maireEJB.retrieveMaires();
+		return Response.ok()
+				.entity(maires)
+				.build();
 	}
 
 }

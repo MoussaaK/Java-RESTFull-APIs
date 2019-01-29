@@ -1,4 +1,6 @@
 package org.konate.tpjavajee.rest;
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -37,7 +39,7 @@ public class DepartementRS {
 	public Response create(@FormParam("name") String nom){
 		long id = departementEJB.createDepartement(nom);		
 		return Response.ok()
-				.entity("Departement creee avec l'id " + id)
+				.entity("Departement created with ID : " + id)
 				.build();
 	}
 
@@ -56,9 +58,9 @@ public class DepartementRS {
 		MediaType.APPLICATION_JSON
 	})
 	public Response deleteMaire(@PathParam("id") long id) {
-		Departement departement = departementEJB.deleteDepartement(id);
+		departementEJB.deleteDepartement(id);
 		return Response.ok()
-				.entity("Le maire " + departement.getNom() + " a ete supprimer avec succes")
+				.entity("Departement with ID : " + id + " removed successfully")
 				.build(); 
 	}
 
@@ -82,6 +84,18 @@ public class DepartementRS {
 		return Response.ok()
 				.entity(departement.getCommunes())
 				.build(); 
+	}
+	
+	@GET @Path("all")
+	@Produces({
+		MediaType.APPLICATION_XML,
+		MediaType.APPLICATION_JSON
+	})
+	public Response getDepartements() {
+		List<Departement> departements = departementEJB.retrieveDepartements();
+		return Response.ok()
+				.entity(departements)
+				.build();
 	}
 }
 
