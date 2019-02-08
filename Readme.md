@@ -1,5 +1,1 @@
-# Reponse aux questions de cours sur les **Services REST**
-
-## Exercice 1
-
-## Exercice 1
+#REST API to expose France Cities OpenData from MySQL DB as services
