@@ -14,12 +14,12 @@ function getMaires($scope) {
       dataType: "json",
       success: function(data) {
         console.log(data);
-        data.forEach(function(maire) {
+        data[0].forEach(function(maire) {
           
           $scope.maires.push({
-        	  ID : maire.id,
-	          Nom : maire.nom,
-	          Prenom : maire.prenom
+        	  ID : maire[0],
+	          Nom : maire[1],
+	          Prenom : maire[2]
           });
         }, this);
         
@@ -34,7 +34,6 @@ function getCommunes($scope) {
 
 	  $scope.communes = [];
 	  $scope.search = function () {
-	    var city = $scope.cityName;
 	    var tmpUrl = "http://localhost:8080/tp-jee-glassfish/rest/commune/all";
 	    $.ajax({
 	      contentType: "",
@@ -44,12 +43,11 @@ function getCommunes($scope) {
 	      dataType: "json",
 	      success: function(data) {
 	        console.log(data);
-	        data.forEach(function(commune) {
-	          
+	        data[0].forEach(function(commune) {
 	          $scope.communes.push({
-	            ID : commune.id,
-	            Nom : commune.nom,
-	            Maire : commune.maire
+	            "ID" : commune[0],
+	            "Nom" : commune[1],
+	            "Maire" : commune[2]
 	          });
 	        }, this);
 	        
@@ -74,12 +72,12 @@ function getDepartements($scope) {
 	      dataType: "json",
 	      success: function(data) {
 	        console.log(data);
-	        data.Search.forEach(function(dpt) {
+	        data[0].forEach(function(dpt) {
 	          
 	          $scope.dpts.push({
-	        	  ID : dpts.id,
-	        	  Nom : dpts.nom,
-	        	  Code_Postale : dpts.code
+	        	  "ID" : dpt[0],
+	        	  "Nom" : dpt[1],
+	        	  "Code_Postale" : dpt[2]
 	          });
 	        }, this);
 	        
