@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" type="image/x-icon" href="favicon.ico">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-	</head>
-	
-	<body>
-		<div ng-app="CityApp">
-		
-			<h2>Add Maire</h2>
-		
-			<form action="rest/maire/create" method="post">
-				<input type="text" name="name"> <input type="submit"
-					value="Add Maire">
-			</form>
-		
-		
-			<h2>Change Maire</h2>
-		
-			<form action="rest/maire/update" method="post">
-				<input type="text" name="id" value="id"> <input type="text"
-					name="name" value="name"> <input type="submit" value="Update">
-			</form>
-			
-			<div class=""  ng-controller="maireCtrl">
+</head>
+
+<body>
+	<div ng-app="CityApp">
+
+		<h2>Add Maire</h2>
+
+		<form action="rest/maire/create" method="post">
+			<input type="text" name="name"> <input type="submit"
+				value="Add Maire">
+		</form>
+
+
+		<h2>Change Maire</h2>
+
+		<form action="rest/maire/update" method="post">
+			<input type="text" name="id" value="id"> <input type="text"
+				name="name" value="name"> <input type="submit"
+				value="Update">
+		</form>
+
+		<div class="" ng-controller="maireCtrl">
+			<button ng-click="search()">Show Maires</button>
+			<div>
 				<table class="table table-striped table-bordered">
-				    <thead>
-				      <tr>
-				        <th>ID</th>
-				        <th>Nom</th>
-				        <th>Maire</th>
-				      </tr>
-				    </thead>
-				    <tbody>
-				      <tr class="table-active" ng-repeat="maire in maires">
-				        <td>maire.id</td>
-				        <td>maire.nom</td>
-				        <td>maire.prenom</td>
-				      </tr>
-				    </tbody>
-			    </table>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nom</th>
+							<th>Maire</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="table-active" ng-repeat="maire in maires">
+							<td>maire.id</td>
+							<td>maire.nom</td>
+							<td>maire.prenom</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="./angular.js"></script>
-		<script src="./app.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	</body>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="./angular.js"></script>
+	<script src="./app.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
 </html>
