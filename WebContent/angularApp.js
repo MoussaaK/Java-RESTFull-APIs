@@ -1,8 +1,9 @@
 var app = angular.module("CityApp", []);
 
 function getMaires($scope) {
-	$scope.maires = [];
+	
 	$scope.search = function () {
+		$scope.maires = [];
 		var resource_url = "http://localhost:8080/tp-jee-glassfish/rest/maire/all";
 		$.ajax({
 			contentType: "",
@@ -12,11 +13,11 @@ function getMaires($scope) {
 			dataType: "json",
 			success: function(data) {
 				console.log(data);
-				data[0].forEach(function(maire) {
+				data.forEach(function(maire) {
 					$scope.maires.push({
-						ID : maire[0],
-						Nom : maire[1],
-						Prenom : maire[2]
+						"ID" : maire[0],
+						"Nom" : maire[1],
+						"Prenom" : maire[2]
 					});
 				}, this);
 
@@ -28,8 +29,8 @@ function getMaires($scope) {
 app.controller("maireCtrl", getMaires);
 
 function getCommunes($scope) {
-	$scope.communes = [];
 	$scope.search = function () {
+		$scope.communes = [];
 		var resource_url = "http://localhost:8080/tp-jee-glassfish/rest/commune/all";
 		$.ajax({
 			contentType: "",
@@ -39,7 +40,7 @@ function getCommunes($scope) {
 			dataType: "json",
 			success: function(data) {
 				console.log(data);
-				data[0].forEach(function(commune) {
+				data.forEach(function(commune) {
 					$scope.communes.push({
 						"ID" : commune[0],
 						"Nom" : commune[1],
@@ -55,8 +56,9 @@ function getCommunes($scope) {
 app.controller("communeCtrl", getCommunes);
 
 function getDepartements($scope) {
-	$scope.dpts = [];
+	
 	$scope.search = function () {
+		$scope.dpts = [];
 		var city = $scope.cityName;
 		var resource_url = "http://localhost:8080/tp-jee-glassfish/rest/departement/all";
 		$.ajax({
@@ -66,8 +68,8 @@ function getDepartements($scope) {
 			url: resource_url,
 			dataType: "json",
 			success: function(data) {
-				console.log(data);
-				data[0].forEach(function(dpt) {
+				console.log(data[0]);
+				data.forEach(function(dpt) {
 
 					$scope.dpts.push({
 						"ID" : dpt[0],
