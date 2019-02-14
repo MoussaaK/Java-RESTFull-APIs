@@ -8,51 +8,64 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="angular.js"></script>
+<script src="angularApp.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<div ng-app="CityApp">
-		<h2>Create Departement</h2>
-		<form action="rest/departement/create" method="post">
-			<input type="text" name="name"> <input type="submit"
-				value="Create Departement">
-		</form>
+	<div class="container-fluid" ng-app="CityApp">
+		<div class="text-center">
+			<h2 class="text-info text-uppercase">Create Departement</h2>
+			<form action="rest/departement/create" method="post" target="_blank">
+				<input type="text" name="name" value="Nom du departement">
+				<input type="submit" value="Create departement" class="btn-primary">
+			</form>
+		</div>
 
-		<h2>Update Departement</h2>
-		<form action="rest/departement/update" method="post">
-			<input type="text" name="id" value="id"> <input type="text"
-				name="name" value="name"> <input type="submit"
-				value="Update Departement">
-		</form>
+		<div ng-controller="departementCtrl">
+			<button ng-click="search()" class="btn-warning pull-right btn-lg">Show Departements</button>
+			<br>
+			<br>
+			<br>
+			<div class="row">
+				<div class="col-md-10">
+					<table class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th class="btn-primary">ID</th>
+								<th class="btn-default">Nom</th>
+								<th class="btn-danger">Code Postale</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="table-active" ng-repeat="dpt in dpts">
+								<td>{{dpt.ID}}</td>
+								<td>{{dpt.Nom}}</td>
+								<td>{{dpt.Code_Postale}}</td>
 
-		<div class="" ng-controller="departementCtrl">
-			<button ng-click="search()">Show Departements</button>
-			<div>
-				<table class="table table-striped table-bordered">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Nom</th>
-							<th>Maire</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="table-active" ng-repeat="dpt in dpts">
-							<td>dpt.id</td>
-							<td>dpt.nom</td>
-							<td>dpt.code</td>
-						</tr>
-					</tbody>
-				</table>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-1">
+					<br> <br>
+					<div ng-repeat="dpt in dpts" class="text-center">
+						<a href="updatedepartement.html" class="btn btn-info btn-md" role="button" target="_blank">Update</a>
+					</div>
+				</div>
+				
+				<div class="col-md-1">
+					<br> <br>
+					<div ng-repeat="dpt in dpts" class="text-center">
+						<a ng-href="http://localhost:8080/tp-jee-glassfish/rest/departement/delete/{{dpt.ID}}" class="btn btn-danger btn-md" role="button" target="#">Delete</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="angular.js"></script>
-	<script src="app.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
